@@ -1,20 +1,35 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="block-list-container">
   <h2 class="exam-heading text-center">Exam Blocks</h2>
   <mat-form-field appearance="fill">
     <mat-label>Choose Date</mat-label>
-    <input matInput type="date" [(ngModel)]="selectedDate" class="form-control">
-  </mat-form-field>
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Choose Date</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+    <input matInput [matDatepicker]="picker" (dateInput)="onDateChange($event)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field> -->
+  </mat-form-field>
+
+  <h1>Main Building</h1>
   
-  <div class="card-container">
-    <ng-container *ngFor="let block of examBlocks; trackBy: trackById">
+  <div class="block-container first-page">
+    <div class="horizontal-block-list">
+    <ng-container *ngFor="let block of examBlocks.slice(0, 20); trackBy: trackById">
+      <div class="card animated fadeIn">
+        <a (click)="onBlockClick(block)" class="block-link">
+          <div class="block">
+            {{ block.name }}
+          </div>
+        </a>
+      </div>
+    </ng-container>
+
+  </div>
+  </div>
+  <h1>New Building</h1>
+  <div class="block-container new-page">
+    <div class="horizontal-block-list">
+    <ng-container *ngFor="let block of examBlocks.slice(20); trackBy: trackById">
       <div class="card animated fadeIn">
         <a (click)="onBlockClick(block)" class="block-link">
           <div class="block">
@@ -24,7 +39,7 @@
       </div>
     </ng-container>
   </div>
-
+</div>
   <div class="loader-container" *ngIf="isLoading">
     <div class="loader"></div>
   </div>

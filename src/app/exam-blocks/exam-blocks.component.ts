@@ -4,7 +4,7 @@ import { StudentService } from '../student.service';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../student.model';
 import { DataSharingService } from '../data-sharing.service';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-exam-blocks',
@@ -70,17 +70,23 @@ export class ExamBlocksComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
+  onDateChange(event: MatDatepickerInputEvent<Date>): void {
+    if (event.value) {
+      const localDate = new Date(event.value.getTime() - (event.value.getTimezoneOffset() * 60000));
+      const selectedDate = localDate.toISOString().split('T')[0];
+      this.selectedDate = selectedDate;
+      console.log(this.selectedDate);
+    }
+  }
+  
+  
   onBlockClick(block: any): void {
     this.blockNumber = block.id;
     this.isLoading = true;
     this.loadStudentData();
     
   }
-  onDateChange(event: any): void {
-    this.selectedDate = event.value; // Update selectedDate with the selected date
-  }
-  
+ 
   trackById(index: number, block: any): string {
     return block.id; // Assuming each block has a unique ID
   }

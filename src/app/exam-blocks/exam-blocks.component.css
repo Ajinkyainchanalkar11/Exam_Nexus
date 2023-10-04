@@ -98,3 +98,34 @@
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.block-container {
+  break-inside: avoid; /* Avoid breaking within blocks */
+  page-break-before: always; /* Ensure a page break before this container */
+}
+
+.first-page {
+  page-break-before: auto; /* Allow page breaks before this container on the first page */
+}
+
+.new-page {
+  page-break-before: always; /* Always start a new page before this container */
+}
+.block-container {
+  break-inside: avoid; /* Avoid breaking within blocks */
+  page-break-before: always; /* Ensure a page break before this container */
+}
+
+.horizontal-block-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  /* Set appropriate width for your cards */
+  width: 100px; /* Adjust as needed */
+  margin: 10px; /* Adjust spacing between cards */
+}
+body, html {
+  margin: 0;
+  padding: 0;
+}
