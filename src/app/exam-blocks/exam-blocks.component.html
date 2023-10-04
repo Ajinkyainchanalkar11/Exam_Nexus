@@ -2,15 +2,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="block-list-container">
-  <h2 class="exam-heading text-center">Exam Blocks</h2>
+  <h2 class="exam-heading text-center" style="font-weight: bold;">Choose Exam Blocks</h2>
   <mat-form-field appearance="fill">
     <mat-label>Choose Date</mat-label>
     <input matInput [matDatepicker]="picker" (dateInput)="onDateChange($event)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-
-  <h1>Main Building</h1>
+  <h1 style="font-weight: bold;"><i class="fas fa-building"></i>Main Building</h1>
   
   <div class="block-container first-page">
     <div class="horizontal-block-list">
@@ -26,7 +25,7 @@
 
   </div>
   </div>
-  <h1>New Building</h1>
+  <h1 style="font-weight: bold;"><i class="fas fa-building"></i>New Building</h1>
   <div class="block-container new-page">
     <div class="horizontal-block-list">
     <ng-container *ngFor="let block of examBlocks.slice(20); trackBy: trackById">

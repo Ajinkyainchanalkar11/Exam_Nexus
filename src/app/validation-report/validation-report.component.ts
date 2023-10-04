@@ -29,9 +29,9 @@ export class ValidationReportComponent {
     this.isLoading = true;
     this.loadingMessage = `Generating ${this.reportType === 'absent' ? 'Absent' : 'Malpractice'} Report...`;
 
-    if (this.reportType === 'absent') {
+    if (this.reportType === 'Absent') {
       this.generateAbsent();
-    } else if (this.reportType === 'malpractice') {
+    } else if (this.reportType === 'Malpractice') {
       this.generateMalpractice();
     }
   }
