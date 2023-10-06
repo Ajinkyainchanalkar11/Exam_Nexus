@@ -34,7 +34,7 @@ import { DemoComponent } from './demo/demo.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +77,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonToggleModule,
     MatCardModule, 
     MatInputModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

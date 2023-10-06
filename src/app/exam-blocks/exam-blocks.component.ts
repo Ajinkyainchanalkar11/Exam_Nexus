@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Student } from '../student.model';
 import { DataSharingService } from '../data-sharing.service';
 import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-exam-blocks',
@@ -66,7 +67,8 @@ export class ExamBlocksComponent implements OnInit {
     private router: Router,
     private studentService: StudentService,
     private http: HttpClient,
-    private sharedData: DataSharingService
+    private sharedData: DataSharingService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -86,7 +88,10 @@ export class ExamBlocksComponent implements OnInit {
     this.loadStudentData();
     
   }
- 
+  showDateAlert(): void {
+    this.toastr.error('Please select a date first!');
+  }
+  
   trackById(index: number, block: any): string {
     return block.id; // Assuming each block has a unique ID
   }

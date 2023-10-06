@@ -35,6 +35,8 @@ export class StudentDataComponent implements OnInit {
   show = true;
   selectedDate!: string;
   selectedBlockNumber!: string;
+  displayedColumns: string[] = ['prn', 'studentName', 'program', 'class', 'course', 'courseCode', 'blockNo', 'date', 'attendance', 'malpractice'];
+
 
   constructor(
     private http: HttpClient,

@@ -1,55 +1,63 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<div class="page-heading-container">
-  <i class="fas fa-edit edit-icon"></i>
-  <h1 class="page-heading">Validation Report</h1>
-</div>
+<form #reportForm="ngForm">
 
-<div class="container">
-  
-  <mat-form-field appearance="fill">
-    <mat-label>Select Report Type</mat-label>
-    <mat-select [(ngModel)]="reportType" class="report-dropdown">
-      <mat-option value="Absent">Absent Report</mat-option>
-      <mat-option value="Malpractice">MalPractice Report</mat-option>
-      <mat-option value="Malpractice">Payment Chart</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Enter Year</mat-label>
-    <input matInput [(ngModel)]="examYear" />
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Select Class</mat-label>
-    <mat-select [(ngModel)]="selectedClass">
-      <mat-option value="First-Year">First-Year</mat-option>
-      <mat-option value="Second-Year">Second-Year</mat-option>
-      <mat-option value="Third-Year">Third-Year</mat-option>
-      <mat-option value="Fourth-Year">Fourth-Year</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Select Examination</mat-label>
-    <mat-select [(ngModel)]="selectedExam">
-      <mat-option value="Mid-Semester">Mid-Semester</mat-option>
-      <mat-option value="End-Semester">End-Semester</mat-option>
-      <mat-option value="Re-Exam">Re-Exam</mat-option>
-      <mat-option value="Remedial">Remedial</mat-option>
-    </mat-select>
-  </mat-form-field>
-  
-  <button mat-raised-button color="primary" (click)="generateReport()">
-    Generate Report
-    <mat-icon>analytics</mat-icon>
-  </button>
-  
-  
-  <div class="loading-message" *ngIf="isLoading">
-    <mat-spinner *ngIf="isLoading" diameter="48"></mat-spinner>
-  
-    {{ loadingMessage }}
+  <div class="page-heading-container">
+    <i class="fas fa-edit edit-icon"></i>
+    <h1 class="page-heading">Validation Report</h1>
   </div>
+  <div class="container">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Select Report Type</mat-label>
+        <mat-select [(ngModel)]="reportType" class="report-dropdown" required name="reportType">
+          <mat-option value="Absent">Absent Report</mat-option>
+          <mat-option value="Malpractice">MalPractice Report</mat-option>
+          <mat-option value="Payment">Payment Chart</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
 
-</div>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter Year</mat-label>
+        <input matInput [(ngModel)]="examYear" required name="examYear" />
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Select Class</mat-label>
+        <mat-select [(ngModel)]="selectedClass" required name="selectedClass">
+          <mat-option value="First-Year">First-Year</mat-option>
+          <mat-option value="Second-Year">Second-Year</mat-option>
+          <mat-option value="Third-Year">Third-Year</mat-option>
+          <mat-option value="Fourth-Year">Fourth-Year</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Select Examination</mat-label>
+        <mat-select [(ngModel)]="selectedExam" required name="selectedExam">
+          <mat-option value="Mid-Semester">Mid-Semester</mat-option>
+          <mat-option value="End-Semester">End-Semester</mat-option>
+          <mat-option value="Re-Exam">Re-Exam</mat-option>
+          <mat-option value="Remedial">Remedial</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <button mat-raised-button color="primary" (click)="generateReport()" [disabled]="!reportForm.valid">
+      Generate Report
+      <mat-icon>analytics</mat-icon>
+    </button>
+
+    <div class="loading-message" *ngIf="isLoading">
+      <mat-spinner *ngIf="isLoading" diameter="48"></mat-spinner>
+      {{ loadingMessage }}
+    </div>
+
+  </div>
+</form>

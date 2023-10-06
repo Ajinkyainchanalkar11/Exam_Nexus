@@ -40,6 +40,7 @@ export class HistoryAbsentComponent implements OnInit {
   selectedProgram = '';
   selectedDate = '';
   isLoading: boolean = true;
+  displayedColumns: string[] = ['prn', 'studentName', 'program', 'class', 'course', 'courseCode', 'blockNo', 'date'];
 
   constructor(private http: HttpClient) {}
 
@@ -53,6 +54,7 @@ export class HistoryAbsentComponent implements OnInit {
       (data) => {
         this.originalAbsentStudents = data;
         this.absentStudents = [...data]; // Make a copy
+        console.log(this.originalAbsentStudents);
         this.isLoading = false; // Set isLoading to false once data is received
 
       },
