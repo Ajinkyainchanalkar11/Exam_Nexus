@@ -6,6 +6,7 @@ import { Student } from '../student.model';
 import { DataSharingService } from '../data-sharing.service';
 import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-exam-blocks',
@@ -97,29 +98,33 @@ export class ExamBlocksComponent implements OnInit {
   }
   
   async loadStudentData(): Promise<void> {
-    const params = {
-      blockNo: this.blockNumber,
-      selectedDate: this.selectedDate
-    };
-  
-    try {
-      const data = await this.http.get<Student[]>(this.apiUrl, { params }).toPromise();
-      if (data) {
-        this.studentData = data;
-        this.sharedData.studentData = data;
-        this.sharedData.setProperty(this.selectedDate,this.blockNumber);
+  const params = {
+    blockNo: this.blockNumber,
+    selectedDate: this.selectedDate
+  };
 
-      } else {
-        console.error('Error loading student data: Response is undefined');
-      }
-    } catch (error) {
-      console.error('Error loading student data:', error);
-    }
-    finally {
-      this.isLoading = false; // Set loading flag to false when data loading is complete
+  try {
+    const data = await this.http.get<Student[]>(this.apiUrl, { params }).toPromise();
+    if (data && data.length > 0) {
+      this.studentData = data;
+      console.log(this.studentData);
+      this.sharedData.studentData = data;
+      this.sharedData.setProperty(this.selectedDate, this.blockNumber);
       this.router.navigate(['/students']);
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'No Data Found',
+        text: 'No records were found for the selected date and block.',
+      });
     }
-
+  } catch (error) {
+    console.error('Error loading student data:', error);
+  } finally {
+    this.isLoading = false;
+    
   }
+}
+
   
 }

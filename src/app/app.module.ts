@@ -35,6 +35,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MenuComponent } from './shared/menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,8 @@ import { MatTableModule } from '@angular/material/table';
     ReportMalpracticeComponent,
     ConfirmationDialogComponent,
     ValidationReportComponent,
-    DemoComponent
+    DemoComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule, 
     MatInputModule,
     MatTableModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

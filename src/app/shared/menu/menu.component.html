@@ -1,0 +1,14 @@
+<button #menuTrigger
+        mat-button
+        class="menu-button"
+        [matMenuTriggerFor]="menu"
+        [@fade]>
+  <mat-icon>menu</mat-icon> Exam Nexus
+</button>
+
+<mat-menu #menu="matMenu" class="menu" [@fade]>
+  <button mat-menu-item routerLink="/absent-report-home" class="menu-item">Home</button>
+  <button mat-menu-item routerLink="/validation-report" class="menu-item">View Report</button>
+  <button mat-menu-item routerLink="/history-absent" class="menu-item">Absent History</button>
+  <button mat-menu-item routerLink="/history-malpractice" class="menu-item">MalPractice History</button>
+</mat-menu>
