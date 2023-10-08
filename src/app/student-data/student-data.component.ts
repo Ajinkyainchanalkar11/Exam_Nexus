@@ -158,9 +158,24 @@ export class StudentDataComponent implements OnInit {
       .subscribe(
         (reportGenerated) => {
           if (reportGenerated) {
-            Swal.fire('Report Already Generated', `Report has already been generated for Block ${blockNumber} on ${date}.`, 'info');
-            this.toastr.error('Error while generating report', 'Error');
-            this.router.navigate(['exam-blocks']);
+            const confirmationDialog: ConfirmationDialog = {
+              title: 'Report Already Generated',
+              html: `Report has already been generated for Block ${blockNumber} on ${date}. Do you want to override the report?`,
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonText: 'Yes',
+              cancelButtonText: 'No'
+            };
+  
+            Swal.fire(confirmationDialog).then((result) => {
+              if (result.isConfirmed) {
+                this.saveReport(this.studentData.filter(student => student.attendance), this.studentData.filter(student => student.malpractice));
+              }
+              else{
+                this.toastr.error('Error while generating report', 'Error');
+                this.router.navigate(['exam-blocks']);
+              }
+            });
           } else {
             this.saveReport(this.studentData.filter(student => student.attendance), this.studentData.filter(student => student.malpractice));
           }

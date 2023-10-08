@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { HttpHeaders } from '@angular/common/http';
 
 interface AbsentStudent {
-  prn: string;
+  prn: number;
   studentname: string;
   year: string;
   programname: string;
   course: string;
   coursecode: string;
-  block_no: string;
+  block_no: number;
   date: string;
   attendance: boolean;
   malpractice: boolean;
@@ -65,7 +66,27 @@ export class HistoryAbsentComponent implements OnInit {
       }
     );
   }
-
+  deleteRecord(prn: number, blockNumber: number, date: string) {
+    const url = `http://localhost:8000/api/absent-students/delete`;
+  
+    const params = {
+      prn: prn,
+      blockNumber: blockNumber,
+      date: date
+    };
+  
+    this.http.post(url, params).subscribe(
+      (response) => {
+        console.log('Record deleted successfully', response);
+        // Update your local data if needed
+      },
+      (error) => {
+        console.error('Error deleting record:', error);
+      }
+    );
+  }
+  
+  
   applyFilters(): void {
     let filteredStudents = this.originalAbsentStudents;
   

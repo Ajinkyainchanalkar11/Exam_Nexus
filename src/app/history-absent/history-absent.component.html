@@ -48,6 +48,7 @@
           <th><i class="material-icons">confirmation_number</i> Course Code</th>
           <th><i class="material-icons">apartment</i> Block No</th>
           <th><i class="material-icons">calendar_today</i> Date</th>
+          <th><i class="material-icons">delete</i> Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -60,6 +61,13 @@
           <td>{{ student.coursecode }}</td>
           <td>{{ student.block_no }}</td>
           <td>{{ student.date }}</td>
+<!-- Inside the ngFor loop in your template -->
+<td>
+  <button mat-icon-button color="warn" (click)="deleteRecord(student.prn, student.block_no, student.date)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</td>
+
         </tr>
       </tbody>
     </table>
