@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 interface AbsentStudent {
   prn: number;
@@ -40,7 +42,7 @@ export class HistoryAbsentComponent implements OnInit {
   isLoading: boolean = true;
   displayedColumns: string[] = ['prn', 'studentname', 'year', 'programname', 'course', 'coursecode', 'block_no', 'date'];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.fetchAbsentStudents();
@@ -81,28 +83,40 @@ export class HistoryAbsentComponent implements OnInit {
   // }
 
   deleteRecord(prn: number, blockNumber: number, date: string) {
-    const url = `http://localhost:8000/api/absent-students/delete`;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this record!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `http://localhost:8000/api/absent-students/delete`;
+        const params = {
+          prn: prn,
+          blockNumber: blockNumber,
+          date: date
+        };
   
-    const params = {
-        prn: prn,
-        blockNumber: blockNumber,
-        date: date
-    };
-
-    this.http.post(url, params).subscribe(
-        (response: any) => {
+        this.http.post(url, params).subscribe(
+          (response: any) => {
             console.log('Record deleted successfully', response.message);
             this.absentStudents = this.absentStudents.filter(s => s.prn !== prn);
-            // Update your local data if needed
-        },
-        (error) => {
+            this.toastr.success('Record deleted successfully');
+          },
+          (error) => {
             console.error('Error deleting record:', error);
-        }
-    );
-}
+            this.toastr.error('Error deleting record');
+          }
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your record is safe :)', 'error');
+      }
+    });
 
   
-  
+  }
 
   applyFilters(): void {
     let filteredStudents = this.originalAbsentStudents;

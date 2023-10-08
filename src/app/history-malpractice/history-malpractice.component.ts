@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 interface MalpracticeStudent {
-  prn: string;
+  prn: number;
   studentname: string;
   year: string;
   programname: string;
   course: string;
   coursecode: string;
-  block_no: string;
+  block_no: number;
   date: string;
   attendance: boolean;
   malpractice: boolean;
@@ -30,7 +31,7 @@ export class HistoryMalpracticeComponent implements OnInit {
   selectedDate = '';
   isLoading: boolean = true;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.fetchMalpracticeStudents();
@@ -74,5 +75,38 @@ export class HistoryMalpracticeComponent implements OnInit {
     this.selectedDate = '';
     this.malPracticeStudents = this.originalMalpracticeStudents;
   }
+
+  deleteRecord(prn: number, blockNumber: number, date: string) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this record!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `http://localhost:8000/api/MalPractice-students/delete`;
+        const params = {
+          prn: prn,
+          blockNumber: blockNumber,
+          date: date
+        };
   
+        this.http.post(url, params).subscribe(
+          (response: any) => {
+            console.log('Record deleted successfully', response.message);
+            this.malPracticeStudents = this.malPracticeStudents.filter(s => s.prn !== prn);
+            this.toastr.success('Record deleted successfully');
+          },
+          (error) => {
+            console.error('Error deleting record:', error);
+            this.toastr.error('Error deleting record');
+          }
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your record is safe :)', 'error');
+      }
+    });
+}
 }
