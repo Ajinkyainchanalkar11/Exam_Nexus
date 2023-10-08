@@ -92,6 +92,7 @@ export class HistoryAbsentComponent implements OnInit {
     this.http.post(url, params).subscribe(
         (response: any) => {
             console.log('Record deleted successfully', response.message);
+            this.absentStudents = this.absentStudents.filter(s => s.prn !== prn);
             // Update your local data if needed
         },
         (error) => {
