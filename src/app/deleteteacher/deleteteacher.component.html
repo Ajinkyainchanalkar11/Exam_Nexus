@@ -1,0 +1,14 @@
+<div class="container">
+    <div>
+        <h2>Delete Teacher</h2> <!-- Added header -->
+        <form (submit)="deleteTeacher()" class="mat-form">
+          <mat-form-field class="mat-input-field">
+            <mat-label>Teacher Name:</mat-label>
+            <input matInput type="text" id="teacherName" name="teacherName" [(ngModel)]="teacherName" required>
+          </mat-form-field>
+      
+          <button type="submit" mat-raised-button color="primary">Delete</button>
+        </form>
+      </div>
+</div>
+  

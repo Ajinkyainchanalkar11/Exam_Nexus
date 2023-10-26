@@ -1,0 +1,40 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th><h3>Teacher Name</h3></th>
+        <th><h3>Teacher Department</h3></th>
+        <th><h3>Teacher Status</h3></th>
+        <ng-container *ngFor="let teacher of teacher1Data; index as i">
+          <th>
+           
+            <hr>
+            {{ teacher. date || 'Exam Date' }} <br>
+            <hr>
+            {{ teacher.startTime || 'Starting Time' }} <br>
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacherData of fetch12; let rowIndex = index">
+        <td>{{ teacherData?.teacher_name || 'Teacher Name' }}</td>
+        <td>{{ teacherData?.techer_depart || 'Teacher Department' }}</td>
+        <td>{{ teacherData?.teacher_status || 'Teacher Status' }}</td>
+        <ng-container *ngFor="let teacher of teacher1Data; let colIndex = index">
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="teacherData.selectedCheckboxes[colIndex]"
+              (change)="onCheckboxChange(teacherData, colIndex)"
+            >
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <button (click)="getselectedTeacherService()" class="First">Generate Supervision Chart</button>
+
+</div>

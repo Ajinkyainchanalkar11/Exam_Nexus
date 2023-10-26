@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">Update Teacher Information</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="updateTeacher()" #teacherForm="ngForm">
+        <div class="form-group">
+          <label for="index">Position in table</label>
+          <input type="number" id="index" name="index" [(ngModel)]="teacherIndex" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="teacherName">Teacher Name</label>
+          <input type="text" id="teacherName" name="teacherName" [(ngModel)]="teacherName" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="teacherDepart">Teacher Department</label>
+          <input type="text" id="teacherDepart" name="teacherDepart" [(ngModel)]="teacherDepart" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="teacherStatus">Teacher Status</label>
+          <input type="text" id="teacherStatus" name="teacherStatus" [(ngModel)]="teacherStatus" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

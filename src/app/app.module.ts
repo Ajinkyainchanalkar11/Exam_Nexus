@@ -34,6 +34,15 @@ import { DemoComponent } from './demo/demo.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+import { ShowChartComponent } from './show-chart/show-chart.component';
+import { NextpageComponent } from './nextpage/nextpage.component';
+import { UpdationsComponent } from './updations/updations.component';
+import { SignupComponent } from './signup/signup.component';
+import { MatTableModule } from '@angular/material/table';
+import { DeleteteacherComponent } from './deleteteacher/deleteteacher.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ViewhistoryComponent } from './viewhistory/viewhistory.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +58,13 @@ import { MatCardModule } from '@angular/material/card';
     ReportMalpracticeComponent,
     ConfirmationDialogComponent,
     ValidationReportComponent,
-    DemoComponent
+    DemoComponent,
+    ShowChartComponent,
+    NextpageComponent,
+    UpdationsComponent,
+    SignupComponent,
+    DeleteteacherComponent,
+    ViewhistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +91,9 @@ import { MatCardModule } from '@angular/material/card';
     MatNativeDateModule,
     MatButtonToggleModule,
     MatCardModule, 
+    MatTableModule,
     MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

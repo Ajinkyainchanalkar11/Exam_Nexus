@@ -12,18 +12,17 @@ import { ReportAbsentComponent } from './report-absent/report-absent.component';
 import { ReportMalpracticeComponent } from './report-malpractice/report-malpractice.component';
 import { ValidationReportComponent } from './validation-report/validation-report.component';
 import { DemoComponent } from './demo/demo.component';
+import { ShowChartComponent } from './show-chart/show-chart.component';
+import { NextpageComponent } from './nextpage/nextpage.component';
+import { UpdationsComponent } from './updations/updations.component';
+import { SignupComponent } from './signup/signup.component';
+import { DeleteteacherComponent } from './deleteteacher/deleteteacher.component';
+import { ViewhistoryComponent } from './viewhistory/viewhistory.component';
 const routes: Routes = [
   {path: '',redirectTo: 'absent-report-home',pathMatch: 'full'},
   {path: 'absent-report-home',component: AbsentReportHomeComponent},
-  // {
-  //   path: 'students',
-  //   component: StudentDataComponent,
-  //   resolve: {
-  //     studentData: StudentDataResolver,
-  //   },
-  // },
+
   { path: 'students', component: StudentDataComponent },
-  // { path: 'students/:blockNo', component: StudentDataComponent },
   { path: 'exam-blocks', component: ExamBlocksComponent },
   { path: 'view-report/:classId', component: ViewReportComponent },
   {path:'class',component:ClassComponent},
@@ -35,9 +34,13 @@ const routes: Routes = [
   {path:'demo',component:DemoComponent},
   {path:'view-report',component:ViewReportComponent},
   {path:'validation-report',component:ValidationReportComponent},
-  // { path: 'absent-report', component: AbsentReportComponent },
-  // { path: '', redirectTo: '/exam-blocks', pathMatch: 'full' },
-  // { path: '', redirectTo: '/AbsentReportHome', pathMatch: 'full' }
+  {path:'show-chart',component:ShowChartComponent},
+  {path:'nextpage',component:NextpageComponent},
+  {path:'updations',component:UpdationsComponent},
+  {path:'signup',component:SignupComponent},
+  {path:'deleteteacher',component:DeleteteacherComponent},
+  {path:'viewhistory',component:ViewhistoryComponent},
+ 
 ];
 
 @NgModule({

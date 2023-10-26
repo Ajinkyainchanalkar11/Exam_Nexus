@@ -9,6 +9,7 @@ export class DataSharingService {
   studentData: Student[] = [];
   selectedDate!:string;
   selectedBlockNumber!:string;
+  selectedTeachers: any[] = [];
   private absentStudentsData: any[] = [];
 
   setAbsentStudents(data: any[]): void {
@@ -24,5 +25,14 @@ export class DataSharingService {
   }
   getStudentData(){
     return this.studentData;
+  }
+
+
+  setSelectedTeachers(teachers: any[]) {
+    this.selectedTeachers = teachers;
+  }
+
+  getSelectedTeachers() {
+    return this.selectedTeachers;
   }
 }

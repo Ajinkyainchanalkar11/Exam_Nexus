@@ -1,139 +1,80 @@
-.home-container {
-  background: #f9f9f9;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  animation: fadeInUp 1s ease;
-}
-
-.title {
-  font-size: 48px;
-  color: #333;
-  margin-bottom: 30px;
-  animation: fadeInUp 1s ease;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.btn {
-  font-size: 1rem;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  font-weight: 600;
-  border: none;
-  outline: none;
-  text-transform: uppercase;
-}
-.btn i {
-  margin-right: 8px;
-}
-
-.btn-generate,
-.btn-view,
-.btn-view-report {
-  background: #007bff;
+/* Custom styles for the home container */
+.custom-home-container {
+  background-color: #3498db;
   color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-generate:hover,
-.btn-view:hover,
-.btn-view-report:hover {
-  background: #0a0a0a;
-}
-
-.btn-generate {
-  background: #5cb85c;
-}
-
-.btn-view {
-  background: #1976D2;
-}
-
-.btn-view-report {
-  background: #f0ad4e;
-}
-
-/* .btn {
-  background: #f8f9fa;
-  color: #343a40;
-} */
-
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.mat-card {
-  max-width: 400px;
-  margin: 0 auto;
+/* Custom styles for the content */
+.custom-content {
   text-align: center;
 }
 
-.mat-icon {
-  vertical-align: middle;
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-button {
-  min-width: 150px;
-}
-
-/* Add hover effect */
-button:hover {
-  transform: scale(1.05);
-}
-.mat-card {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.title {
-  font-size: 36px;
+/* Custom styles for the title */
+.custom-title {
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
-.mat-icon {
-  vertical-align: middle;
+/* Custom styles for icons */
+.custom-icon {
+  font-size: 24px;
+  margin-right: 10px;
 }
-.buttons button {
-  transition: transform 0.2s, box-shadow 0.2s; /* Added transition for smoother hover effect */
-  font-size: 18px; /* Increase font size */
-  padding: 12px 24px; /* Increase padding */
-  margin: 5px; /* Add a small margin */
+
+/* Custom styles for buttons container */
+.custom-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Custom styles for buttons */
+.custom-button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Custom styles for the primary button */
+.custom-button.mat-primary {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+/* Custom styles for the primary button on hover */
+.custom-button.mat-primary:hover {
+  background-color: #219652;
+}
+
+/* Custom styles for the secondary button */
+.custom-button.mat-secondary {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Custom styles for the secondary button on hover */
+.custom-button.mat-secondary:hover {
+  background-color: #c53224;
+}
+
+/* Custom styles for the warning button */
+.custom-button.mat-warn {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+/* Custom styles for the warning button on hover */
+.custom-button.mat-warn:hover {
+  background-color: #d08c10;
 }
 
 
-.buttons button:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+.container{
+  margin-top: 150px;
 }

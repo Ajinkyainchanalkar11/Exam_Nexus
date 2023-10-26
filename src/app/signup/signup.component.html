@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div class="card">
+    <h1 class="form-title">Teacher Registration</h1>
+
+    <form class="custom-form" (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="teacherName" class="form-label">Name</label>
+        <input
+          type="text"
+          id="teacherName"
+          [(ngModel)]="teacherData.teacher_name"
+          name="teacherName"
+          class="form-input custom-input"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="teacherDepart" class="form-label">Department</label>
+        <input
+          type="text"
+          id="teacherDepart"
+          [(ngModel)]="teacherData.techer_depart"
+          name="teacherDepart"
+          class="form-input custom-input"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="teacherStatus" class="form-label">Status</label>
+        <input
+          type="text"
+          id="teacherStatus"
+          [(ngModel)]="teacherData.teacher_status"
+          name="teacherStatus"
+          class="form-input custom-input"
+        >
+      </div>
+
+      <button type="submit" class="form-button custom-button">Submit</button>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>
